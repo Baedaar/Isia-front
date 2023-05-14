@@ -1,0 +1,74 @@
+#footer {
+	width: 100%;
+	padding: 25px 0;
+	text-align: center;
+	color: #fff;
+	background: #084D75;
+    position: fixed;
+   bottom: 0;
+   height: 70px;
+}
+#nav {
+    background-color: #084D75;
+    height: 70px;
+}
+#brand {
+    color: #fff;
+}
+#nav-link-home {
+    color: #fff;
+}
+#nav-link-connection {
+    color: #fff;
+}
+
+#footer-text {
+    text-align: center;
+    color: #fff;
+    font-weight: 200;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    line-height: 50%;
+}
+
+#card-horaires {
+    background: #D9D9D9;
+    border-radius: 25px;
+    margin-top: 2.5rem;
+}
+
+#card-services {
+    background: #D9D9D9;
+    border-radius: 25px;
+}
+
+#card-adresse {
+    background: #D9D9D9;
+    border-radius: 25px;
+}
+
+#card-contact {
+    background: #D9D9D9;
+    border-radius: 25px;
+    margin-top: 10.5rem;
+}
+
+#card-connection {
+    background: #fff;
+    margin-top: 2.5rem;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #D9D9D9;
+    border-width: 1px;
+}
+
+#card-connection-header {
+    background-color: #084D75;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    width: 100%;
+    height: fit-content;
+     
+}
