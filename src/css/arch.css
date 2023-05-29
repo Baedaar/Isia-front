@@ -6,6 +6,14 @@
     padding-top: 70px; /* Hauteur de la navbar */
     padding-bottom: 70px; /* Hauteur du footer */
   }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 140px); /* Hauteur de la navbar plus celle du footer */
+    padding-top: 70px; /* Hauteur de la navbar */
+  }
   
 
   
