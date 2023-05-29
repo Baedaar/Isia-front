@@ -29,9 +29,6 @@ export default function AdminPanel(props) {
           <Navbar.Brand id="brand">{adminName()}</Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
           <Nav className="me-auto">
-            <Nav.Link id="nav-link-home" as={Link} to="/employe/documents">
-                Documents
-            </Nav.Link>
             <Nav.Link id="nav-link-home" as={Link} to="/admin/register">
                 Enregister employé
             </Nav.Link>
