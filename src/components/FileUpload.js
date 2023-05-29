@@ -76,6 +76,7 @@ export default function FileUploadComponent({ token, adminUsername }) {
                 </Nav>
                     </Container>
         </Navbar>
+        <div className="content">
       <Row className="justify-content-md-center">
         {/* Success message */}
         {successMessage && (
@@ -112,6 +113,7 @@ export default function FileUploadComponent({ token, adminUsername }) {
           </Form>
         </Col>
       </Row>
+      </div>
     </Container>
   );
 }

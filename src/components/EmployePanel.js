@@ -36,7 +36,9 @@ export default function EmployePanel(props) {
           </Nav>
         </Container>
       </Navbar>
+      <div className="content">
       <UpdateEmploye employe={employe}/>
+      </div>
     </div>
   );
 }

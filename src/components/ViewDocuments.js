@@ -48,6 +48,7 @@ export default function DocumentTable({ employeUsername, token }) {
                 </Nav>
                     </Container>
         </Navbar>
+        <div className='content'>
       <Table striped bordered hover>
       <thead>
         <tr>
@@ -71,6 +72,7 @@ export default function DocumentTable({ employeUsername, token }) {
       Télecharger
     </Button>
     </Table>
+    </div>
     </Container>
     
   );

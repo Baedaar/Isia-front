@@ -110,7 +110,7 @@ export default function EmployeeForm(props) {
                 </Nav>
                     </Container>
             </Navbar>
-            <div className='arch'>
+            <div className='content'>
                 {/* Success message */}
             {successMessage && (
                 <Row>
