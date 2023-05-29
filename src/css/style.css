@@ -2,10 +2,6 @@ body, html {
     height: 100%;
 }
 
-.arch {
-    position: relative;
-    padding: 1rem;
-}
 
 .arch::before {
     content: "";
@@ -36,7 +32,11 @@ body, html {
 #nav {
     background-color: #084D75;
     height: 70px;
-}
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
 
 #brand, #nav-link-home, #nav-link-connection {
     color: #fff;
@@ -54,10 +54,15 @@ body, html {
 #card-horaires, #card-services, #card-adresse, #card-contact {
     background: #D9D9D9;
     border-radius: 25px;
+    margin-top: 50px;
+}
+
+#card-horaires {
+    margin-top: 5rem;
 }
 
 #card-contact {
-    margin-top: 2.5rem;
+    margin-top: 10rem;
 }
 
 #card-connection {

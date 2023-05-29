@@ -8,6 +8,7 @@ import ViewDocuments from "./ViewDocuments";
 import "../css/bootstrap.min.css";
 import "../css/style.css";
 import "../css/fontawsome.all.min.css"
+import '../css/arch.css';
 import SecurityController from "./SecurityController";
 import EmployePanel from "./EmployePanel";
 import SecurityControllerAdmin from "./SecurityControllerAdmin";

@@ -1,6 +1,19 @@
 .arch {
-    background-image: url("../images/isia-background.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 140px); /* Hauteur de la navbar plus celle du footer */
+    padding-top: 70px; /* Hauteur de la navbar */
+    padding-bottom: 70px; /* Hauteur du footer */
+  }
+  
+
+  
+  #nav-connexion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
   }
   

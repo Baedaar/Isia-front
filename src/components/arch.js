@@ -8,14 +8,12 @@ import '../css/arch.css';
 
 export default function Acceuil() {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <header>
-                <Navbar id="nav" expand="lg">
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Navbar id="nav" expand="lg">
                     <Container>
                         <Navbar.Brand id="brand" href="#home">Diagonal</Navbar.Brand>
                         <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
                         <Nav className="me-auto">
-                            <Nav.Link id="nav-link-home" as={Link} to={"/home"}>Acceuil</Nav.Link>
                             <NavDropdown title="Connexion" id="basic-nav-dropdown">
                                 <NavDropdown.Item as={Link} to={"/connection/Employe"}>Employé</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -24,8 +22,8 @@ export default function Acceuil() {
                         </Nav>
                     </Container>
                 </Navbar>
-            </header>
-            <Container fluid className="arch flex-grow-1">
+           <div className="arch">     
+            <Container fluid className=" flex-grow-1">
                 <Row className="justify-content-md-center gx-5 gy-5">
                     <Col xs={12} sm={6} md={4}>
                         <Card id="card-horaires">
@@ -104,6 +102,7 @@ export default function Acceuil() {
                     </Col>
                 </Row>
             </Container>
+        </div>    
             <div id="footer">
                 <p id="footer-text">
                     Copyright © 2022, Tout droits reservés
