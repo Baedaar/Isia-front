@@ -93,7 +93,7 @@ export default function FileUploadComponent({ token, adminUsername }) {
           </Alert>
         )}
         <Col md="6">
-          <h2 className="text-center">Upload File</h2>
+          <h2 className="text-center">Enregistrer un Fichier</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="file">
               <Form.Label>Select File:</Form.Label>
