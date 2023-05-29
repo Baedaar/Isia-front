@@ -110,6 +110,7 @@ export default function EmployeeForm(props) {
                 </Nav>
                     </Container>
             </Navbar>
+            <div className='arch'>
                 {/* Success message */}
             {successMessage && (
                 <Row>
@@ -237,6 +238,7 @@ export default function EmployeeForm(props) {
                   </Form>
                 </Col>
               </Row>
+              </div>
             </Container>
           );
         };

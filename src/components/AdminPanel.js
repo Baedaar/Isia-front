@@ -40,6 +40,7 @@ export default function AdminPanel(props) {
           </Nav>
         </Container>
       </Navbar>
+      <div className="arch">
       {admin ? (
       <UserContextProvider token={admin.token}>
         <UserTable />
@@ -47,6 +48,7 @@ export default function AdminPanel(props) {
     ) : (
       <div>Loading...</div>
     )}
+    </div>
     </div>
   );
 }
