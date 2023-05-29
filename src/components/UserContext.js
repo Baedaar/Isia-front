@@ -11,7 +11,7 @@ export default function UserContextProvider({ children, token }) {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://34.155.239.217:8085/admin/allUsers', 
+      const response = await fetch('http://34.155.239.217:8085/admin/allUsers',
       {headers : {'Authorization' : `Bearer ${token}`,},});
       const data = await response.json();
       setUsers(data);

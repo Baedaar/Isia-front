@@ -1,22 +1,36 @@
 import React, { useState } from "react";
-import { Card, Col, Form, InputGroup, Nav, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Alert, Card, Col, Form, InputGroup, Nav, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ConnectionAdmin(props) {
 
     const [fields, setFields] = useState({ login: "", password: "" });
+    const history = useNavigate();
+    const [error, setError] = useState("");
+
+    const handleSubmit = async () => {
+        const success = await props.fetchAdmin(fields.login, fields.password);
+        if (success) {
+            history("/admin");
+        } else {
+            setError("L'identifiant ou le mot de passe est incorrect");
+        }
+    };
 
     return (
         <Row className="d-flex justify-content-center p-3 pt-5">
             <Card className="max-width-50-rem p-0">
-            <Card.Header className="text-center">Authentification</Card.Header>
+                <Card.Header className="text-center">Authentification</Card.Header>
+                {error && <Alert variant="danger">{error}</Alert>}
                 <Row className="pt-4 ps-3 pe-3">
                     <Col sm={{ offset: 1, span: 10 }} md={3} lg={2}>
                         <output>Identifiant</output>
                     </Col>
                     <Col sm={{ offset: 1, span: 10 }} md={{ offset: 0, span: 7 }} lg={7}>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="inpLogin"><i className="fa fa-user"></i></InputGroup.Text>
+                            <InputGroup.Text id="inpLogin">
+                                <i className="fa fa-user"></i>
+                            </InputGroup.Text>
                             <Form.Control 
                                 type="text"
                                 aria-describedby="inpLogin"
@@ -33,7 +47,9 @@ export default function ConnectionAdmin(props) {
                     </Col>
                     <Col sm={{ offset: 1, span: 10 }} md={{ offset: 0, span: 7 }} lg={7}>
                         <InputGroup className="mb-3">
-                            <InputGroup.Text id="inpPassword"><i className="fa fa-key"></i></InputGroup.Text>
+                            <InputGroup.Text id="inpPassword">
+                                <i className="fa fa-key"></i>
+                            </InputGroup.Text>
                             <Form.Control 
                                 type="password" 
                                 aria-describedby="inpPassword"
@@ -46,13 +62,12 @@ export default function ConnectionAdmin(props) {
                 </Row>
                 <Row className="pb-3 ps-3 pe-3">
                     <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1">
-                        <Nav.Link
+                        <button
                             className="btn btn-dark w-100 text-white"
-                            as={Link} to="/admin" 
-                            onClick={() => props.fetchAdmin(fields.login, fields.password)}
+                            onClick={handleSubmit}
                         >
                             Connexion
-                        </Nav.Link>
+                        </button>
                     </Col>
                     <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1">
                         <Nav.Link className="btn btn-dark w-100 text-white">

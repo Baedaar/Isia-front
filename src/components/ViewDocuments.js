@@ -1,89 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { Table, Container, Button, Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Table, Button, Container, Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import 'whatwg-fetch';
 
-export default function ViewDocuments(props) {
-
-    const [employe, setEmploye] = useState(props.employe);
+export default function DocumentTable({ employeUsername, token }) {
+  const [documents, setDocuments] = useState([]);
+  const [selectedDocument, setSelectedDocument] = useState(null);
 
   useEffect(() => {
-    setEmploye(props.employe);
-  }, [props.employe]);
+    fetch(`http://34.155.239.217:8085/employe/allDocuments?employeUsername=${employeUsername}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => setDocuments(data))
+      .catch(error => console.error(error));
+  }, [employeUsername, token]);
 
-  function employeName() {
-    console.log(employe);
-    return employe != null ? `${employe.compte.nom} ${employe.compte.prenom}` : "Employé";
-  }
-
-
-  // Fetch the documents from the database here
-  const documents = [
-    {
-        id: 1,
-        title: "Document 1",
-        category: "Category 1",
-        content: new Blob(["Example content for Document 1"], { type: "text/plain" }),
-      },
-      {
-        id: 2,
-        title: "Document 2",
-        category: "Category 2",
-        content: new Blob(["Example content for Document 2"], { type: "text/plain" }),
-      },
-  ];
-  const downloadDocument = (doc) => {
-    const url = URL.createObjectURL(doc.content);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = doc.title;
-    link.click();
-    URL.revokeObjectURL(url);
+  const handleDownload = () => {
+    fetch(`http://34.155.239.217:8085/employe/download?docId=${selectedDocument.id}&employeUsername=${employeUsername}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(res => res.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = selectedDocument.docName || 'download';
+        a.click();
+      })
+      .catch(error => console.error(error));
   };
 
-
   return (
-    <div>
-        <Navbar id="nav" expand="lg">
-        <Container>
-          <Navbar.Brand id="brand">{employeName()}</Navbar.Brand>
-          <Navbar.Collapse id="basic-navbar-nav">
-            </Navbar.Collapse>
-          <Nav className="me-auto">
-            <Nav.Link id="nav-link-home" as={Link} to="/employe">
-              Retour
-            </Nav.Link>
-            {/* Add other Nav.Links here */}
-          </Nav>
-        </Container>
-      </Navbar>
-      <h2>Documents</h2>
+    <Container>
+      <Navbar id="nav" expand="lg">
+                    <Container>
+                        <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+                 <Nav className="me-auto">
+                        <Nav.Link id="nav-link-home" as={Link} to="/employe">
+                     Retour
+                        </Nav.Link>
+                        {/* Add other Nav.Links here */}
+                </Nav>
+                    </Container>
+        </Navbar>
       <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Actions</th>
+      <thead>
+        <tr>
+          <th>Document</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {documents.map(document => (
+          <tr key={document.id}>
+            <td>{document.docName}</td>
+            <td>
+              <Button variant="primary" onClick={() => setSelectedDocument(document)}>
+                Selectionner
+              </Button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {documents.map((doc) => (
-            <tr key={doc.id}>
-              <td>{doc.id}</td>
-              <td>{doc.title}</td>
-              <td>{doc.category}</td>
-              <td>
-                <Button
-                  variant="primary"
-                  onClick={() => downloadDocument(doc)}
-                >
-                  Download
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
+        ))}
+      </tbody>
+      <Button variant="success" disabled={!selectedDocument} onClick={handleDownload}>
+      Télecharger
+    </Button>
+    </Table>
+    </Container>
+    
   );
 }
