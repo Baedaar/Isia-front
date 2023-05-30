@@ -61,13 +61,18 @@ export default function ConnectionAdmin(props) {
                     </Col>
                 </Row>
                 <Row className="pb-3 ps-3 pe-3">
-                    <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1 d-flex justify-content-center">
+                    <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1">
                         <button
                             className="btn btn-dark w-100 text-white"
                             onClick={handleSubmit}
                         >
                             Connexion
                         </button>
+                    </Col>
+                    <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1">
+                        <Nav.Link className="btn btn-dark w-100 text-white">
+                            Mot de passe oublié
+                        </Nav.Link>
                     </Col>
                 </Row>
             </Card>

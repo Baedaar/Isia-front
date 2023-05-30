@@ -68,6 +68,11 @@ export default function ConnectionEmp(props) {
                             Connexion
                         </button>
                     </Col>
+                    <Col sm={{ offset: 1, span: 10 }} lg={4} className="p-1">
+                        <Nav.Link className="btn btn-dark w-100 text-white">
+                            Mot de passe oublié
+                        </Nav.Link>
+                    </Col>
                 </Row>
             </Card>
         </Row>
