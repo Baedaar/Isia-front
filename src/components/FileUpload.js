@@ -33,7 +33,7 @@ export default function FileUploadComponent({ token, adminUsername }) {
     formData.append("employeUsername", employeUsername);
 
     try {
-      const response = await fetch("http://34.155.239.217:8085//admin/uploadFile", {
+      const response = await fetch("http://34.155.239.217:8085/admin/uploadFile", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
